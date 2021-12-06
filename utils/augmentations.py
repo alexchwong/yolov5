@@ -22,14 +22,7 @@ class Albumentations:
             check_version(A.__version__, '1.0.3', hard=True)  # version requirement
 
             self.transform = A.Compose([
-                # A.Blur(p=0.01),
-                # A.MedianBlur(p=0.01),
-                # A.ToGray(p=0.01),
-                # A.CLAHE(p=0.01),
-                # A.RandomBrightnessContrast(p=0.0),
-                # A.RandomGamma(p=0.0),
-                # A.ImageCompression(quality_lower=75, p=0.0)],
-                A.RandomCrop(width=720, height=404), # for Kaggle COTS competition
+                A.RandomCrop(width=720, height=404),
                 A.HorizontalFlip(p=0.5),
                 A.RandomBrightnessContrast(p=0.2),
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
