@@ -24,7 +24,7 @@ class Albumentations:
             self.transform = A.Compose([
                 A.RandomCrop(width=720, height=404),
                 A.HorizontalFlip(p=0.5),
-                A.RandomBrightnessContrast(p=0.2),
+                A.RandomBrightnessContrast(p=0.2)],
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
             LOGGER.info(colorstr('albumentations: ') + ', '.join(f'{x}' for x in self.transform.transforms if x.p))
