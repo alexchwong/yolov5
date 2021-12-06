@@ -19,12 +19,14 @@ class Albumentations:
         self.transform = None
         try:
             import albumentations as A
-            check_version(A.__version__, '1.0.3', hard=True)  # version requirement
+            check_version(A.__version__, '1.1.0', hard=True)  # version requirement
 
             self.transform = A.Compose([
-                A.RandomCrop(width=736, height=414),
+                A.RandomCrop(width=640, height=640),
                 A.HorizontalFlip(p=0.5),
-                A.RandomBrightnessContrast(p=0.2)],
+                A.RandomBrightnessContrast(p=0.2),
+                A.RandomGamma(p=0.2),
+                A.ImageCompression(quality_lower=75, p=0.2)],
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
 
             LOGGER.info(colorstr('albumentations: ') + ', '.join(f'{x}' for x in self.transform.transforms if x.p))
