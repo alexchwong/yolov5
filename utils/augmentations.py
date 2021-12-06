@@ -22,7 +22,7 @@ class Albumentations:
             check_version(A.__version__, '1.0.3', hard=True)  # version requirement
 
             self.transform = A.Compose([
-                A.RandomCrop(width=720, height=404),
+                A.RandomCrop(width=736, height=414),
                 A.HorizontalFlip(p=0.5),
                 A.RandomBrightnessContrast(p=0.2)],
                 bbox_params=A.BboxParams(format='yolo', label_fields=['class_labels']))
